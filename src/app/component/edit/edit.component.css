@@ -1,0 +1,44 @@
+.delete{
+  width: 40%;
+  text-align: right;
+}
+
+.card-container{
+  background-color: #e8eff6;
+  border-radius: 5px;
+  border: 1px solid #125699;
+  margin: 5px;
+  padding: 5px;
+}
+
+h3{
+  margin: 5px;
+}
+
+.close-gap{
+  position: relative;
+  top: -20px;
+  left: 5px;
+}
+
+input{
+  margin: 5px;
+}
+
+textarea{
+  margin: 5px;
+  min-height: 50px;
+}
+
+button{
+  margin-left: 5px;
+  height: 35px;
+  width: 120px;
+  background-color: #125699;
+  color: #fff;
+  border-radius: 5px;
+}
+
+button:disabled{
+  background-color: #aabbcd;
+}

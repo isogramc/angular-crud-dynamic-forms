@@ -1,0 +1,18 @@
+<div class="card-container">
+<div class="card">
+  <h3 style="align-items: center">Create New Product</h3>
+  <form [formGroup]="createProductForm" novalidate class="border border-light" (ngSubmit)='createNewProduct()'>
+    <input formControlName='title' type="text" class="form-control mb-4" placeholder="Enter Name"/><br/>
+    <input formControlName='price' type="text" class="form-control mb-4" placeholder="Enter Price"/><br/>
+    <textarea formControlName='description' (focus)="description='';" [(ngModel)]="description" class="form-control mb-4"></textarea><br/>
+    <input formControlName='rating' type="text" class="form-control mb-4" placeholder="Star rating (set initial)"/><br/>
+    <input formControlName='stockamount' type="text" class="form-control mb-4" placeholder="Enter Stock Amount"/><br/>
+    <input formControlName='photo' type="text" [(ngModel)]="imageName" class="form-control mb-4" placeholder="Image" hidden/><br/>
+    <input formControlName='imageUrl' type="text" [(ngModel)]="imageUrl" class="form-control mb-4" placeholder="Image" hidden/><br/>
+    <app-image-upload class="close-gap" (ImageChangedEvent)="getImageName($event)"></app-image-upload><br/>
+    <div class="mb-4">
+        <button class="btn btn-info" [disabled]="createProductForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>
+</div>
