@@ -26,8 +26,8 @@
         <td>{{product.title | uppercase}}</td>
         <td class="small-hides">{{product.productCode}}</td>
         <td>
-            <span *ngIf="product.instock" style="color: green">{{product.price | currency:'ZAR':'R' }}</span>
-            <span *ngIf="!product.instock" style="color: red">{{product.price | currency:'ZAR':'R'}}</span>
+            <span *ngIf="primitiveToBoolean(product.instock)" style="color: green">{{product.price | currency:'ZAR':'R' }}</span>
+            <span *ngIf="!primitiveToBoolean(product.instock)" style="color: red">{{product.price | currency:'ZAR':'R'}}</span>
         </td>
          <td class="small-hides">{{product.rating}}</td>
          <td class="small-hides">{{product.description}}</td>

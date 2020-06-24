@@ -19,20 +19,20 @@ export class ConfigServiceService {
     return this.list;
   }
 
-
   createProduct(data: any): Observable<any> {
+    this.productArray = [];
     this.productArray.push(data);
     console.log(JSON.stringify(this.productArray));
     return this.http.post<any>(`http://localhost:8090/api/create`,
       JSON.stringify(this.productArray), {headers: {'Content-Type': 'application/json'}});
   }
 
-  editProduct(product: any): Observable<any> {
-    this.findArr = [];
-    this.findArr.push(product);
-    console.log(product);
-    return this.http.post<any>(`http://localhost:8090/api/edit`, JSON.stringify(this.findArr),
-      {headers: {'Content-Type': 'application/json'}});
+  editProduct(data: any): Observable<any> {
+    this.productArray = [];
+    this.productArray.push(data);
+    console.log(JSON.stringify(this.productArray));
+    return this.http.post<any>(`http://localhost:8090/api/edit`,
+      JSON.stringify(this.productArray), {headers: {'Content-Type': 'application/json'}});
   }
 
   findById(identifier: any): Observable<any> {

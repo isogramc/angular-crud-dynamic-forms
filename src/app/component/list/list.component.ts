@@ -18,7 +18,16 @@ export class ListComponent implements OnInit {
   imageMargin = '2px';
   mstr: String;
 
-  constructor(private productService: ConfigServiceService) {
+  constructor(private productService: ConfigServiceService) {}
+
+  primitiveToBoolean(value: string | number | boolean | null | undefined): boolean {
+    if (value === 'true') {
+      return true;
+    }
+
+    return typeof value === 'string'
+      ? !!+value   // we parse string to integer first
+      : !!value;
   }
 
   ngOnInit() {
@@ -59,5 +68,4 @@ export class ListComponent implements OnInit {
   editProduct(id, key) {
     window.location.href = '/edit/' + id + '#' + key;
   }
-
 }

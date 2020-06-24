@@ -9,14 +9,14 @@ import {ConfigServiceService} from '../../config-service.service';
 })
 export class EditComponent implements OnInit {
   identity: string;
-  imageName: string;
-  imageUrl: string;
+  updatedName: string;
+  updatedUrl: string;
   description = 'Enter description (150 words max)';
   product = {_id: '', productCode: '', title: '', price: '',
     description: '', rating: '', stockamount: '', photo: '', imageUrl: ''};
 
   @Input() userProductSelection: any;
-  createProductForm: FormGroup;
+  editProductForm: FormGroup;
 
   constructor(private fb: FormBuilder, private productService: ConfigServiceService) { }
 
@@ -31,21 +31,21 @@ export class EditComponent implements OnInit {
       err => console.error(err),
       () => console.log('getProduct completed')
     );
-    this.createProductForm = this.fb.group({
+    this.editProductForm = this.fb.group({
+      id: [null],
       title: [null, Validators.required],
       price: [null],
       description: [null, [Validators.maxLength(150), Validators.required]],
       rating: [null],
       stockamount: [null],
-      imageUrl: [null],
+      photoUrl: [null],
       photo: [null]
     });
   }
 
   updateProduct() {
-    if (this.createProductForm.status === 'VALID') {
-      console.log(this.createProductForm.value);
-      this.productService.editProduct(this.product).subscribe(
+    if (this.editProductForm.status === 'VALID') {
+      this.productService.editProduct(this.editProductForm.value).subscribe(
         data => {
           this.product = data[0];
           console.log(this.product);
@@ -53,15 +53,16 @@ export class EditComponent implements OnInit {
         err => console.error(err),
         () => console.log('getProduct completed')
       );
+      window.location.href = 'list';
     } else {
       console.log('Form is not valid');
     }
   }
 
   getImageName(data) {
-    this.imageName = data.imageName;
-    this.imageUrl = data.imageUrl;
-    console.log(this.imageUrl);
+    this.updatedName = data.imageName;
+    this.updatedUrl = data.imageUrl;
+    console.log(this.updatedUrl);
   }
 
   deleteProduct() {
