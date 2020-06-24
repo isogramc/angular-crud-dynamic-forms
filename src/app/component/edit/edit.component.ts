@@ -12,7 +12,7 @@ export class EditComponent implements OnInit {
   updatedName: string;
   updatedUrl: string;
   description = 'Enter description (150 words max)';
-  product = {_id: '', productCode: '', title: '', price: '',
+  product = {id: '', productCode: '', title: '', price: '',
     description: '', rating: '', stockamount: '', photo: '', imageUrl: ''};
 
   @Input() userProductSelection: any;

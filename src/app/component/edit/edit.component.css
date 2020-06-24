@@ -1,5 +1,4 @@
 .delete{
-  width: 40%;
   text-align: right;
 }
 
@@ -41,4 +40,19 @@ button{
 
 button:disabled{
   background-color: #aabbcd;
+}
+
+@media only screen and (max-width: 600px) {
+  input{
+    width: 90%;
+  }
+  textarea{
+    width: 90%;
+  }
+  .card-container{
+    width: 95%;
+  }
+  .delete{
+    width: 100%;
+  }
 }

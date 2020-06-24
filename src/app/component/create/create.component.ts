@@ -13,7 +13,7 @@ export class CreateComponent implements OnInit {
   imageName: String;
   imageUrl: String;
   photo: String;
-  description = 'Enter description (150 words max)';
+  description = '';
   response = false;
 
   constructor(private fb: FormBuilder, private productService: ConfigServiceService) { }
@@ -47,7 +47,7 @@ export class CreateComponent implements OnInit {
   getImageName(data) {
     this.imageName = data.imageName;
     this.imageUrl = data.imageUrl;
-    console.log(this.imageUrl);
+    console.log(this.imageName);
   }
 
 }

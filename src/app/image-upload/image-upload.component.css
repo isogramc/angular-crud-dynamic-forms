@@ -1,3 +1,20 @@
+.checkbox-plain{
+  border:2px dotted #00f;
+  display:inline-block;
+  background:#ff0000;
+}
+
+.checkbox-con {
+  width: 150px;
+  position: absolute;
+  left: 150px;
+  line-height: 50px;
+}
+
+.checkbox-con label{
+  background-color: #125699;
+}
+
 .container{
   padding: 20px 0 0 0;
 }

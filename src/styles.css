@@ -1,9 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 /*@import "~bootstrap/dist/css/bootstrap.css";*/
 
+*{box-sizing: border-box;}
+
 body{
   margin: 0;
+  padding: 0 5px 0 5px;
   font-family: sans-serif;
   font-size: medium;
   background-color: whitesmoke;
+}
+
+input{
+  height: 25px;
+  width: 50%;
+}
+
+.delete span{
+  border: 3px solid orangered;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+textarea{
+  width:50%;
+  height: 120px;
+  font-family: sans-serif;
+  padding: 8px 3px;
+}
+
+textarea::placeholder{
+  color: dimgray;
+}
+
+.delete{
+  padding-bottom: 15px;
+  width: 52%;
 }

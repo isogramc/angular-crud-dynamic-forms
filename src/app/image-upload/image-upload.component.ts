@@ -18,7 +18,9 @@ export class ImageUploadComponent {
 
   selectedFile: ImageSnippet;
   filename: String;
+  img: String;
   base64ImageData: any;
+  base64Selected = false;
 
   constructor(private imageService: ImageService) {}
 
@@ -40,17 +42,12 @@ export class ImageUploadComponent {
       const reader = new FileReader();
       const date = new Date(file.lastModifiedDate);
       const timestamp = date.getTime();
-      // this.filename = timestamp + '-' + file.name;
-      console.log(file);
 
-      this.getFile(file).then((customJsonFile) => {
-        // customJsonFile is your newly constructed file.
-        this.base64ImageData = customJsonFile;
-        console.log(this.base64ImageData);
-        /*this.ImageChangedEvent.emit({ imageName: this.filename,
-          imageUrl: 'data:' + this.base64ImageData.fileType + ';base64,' +
-            this.base64ImageData.base64StringFile });*/
-      });
+        this.getFile(file).then((customJsonFile) => {
+          // customJsonFile is your newly constructed file.
+          this.base64ImageData = customJsonFile;
+          console.log(this.base64ImageData);
+        });
 
       reader.addEventListener('load', (event: any) => {
         this.selectedFile = new ImageSnippet(event.target.result, file);
@@ -62,9 +59,14 @@ export class ImageUploadComponent {
           this.imageService.uploadImage(formData).subscribe(
           (res) => {
             this.onSuccess();
-            console.log('AAAAAAA', res.imageUrl);
+            console.log('Mongo saved image', res.imageUrl);
+            if ( this.base64Selected ) {
+              this.img = this.base64ImageData.base64StringFile;
+            } else {
+              this.img = '';
+            }
             this.ImageChangedEvent.emit({ imageName: res.imageUrl,
-              imageUrl: '' });
+              imageUrl: this.img });
           },
           (err) => {
             this.onError();
