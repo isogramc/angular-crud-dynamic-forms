@@ -40,16 +40,16 @@ export class ImageUploadComponent {
       const reader = new FileReader();
       const date = new Date(file.lastModifiedDate);
       const timestamp = date.getTime();
-      this.filename = timestamp + '-' + file.name;
+      // this.filename = timestamp + '-' + file.name;
       console.log(file);
 
       this.getFile(file).then((customJsonFile) => {
         // customJsonFile is your newly constructed file.
         this.base64ImageData = customJsonFile;
         console.log(this.base64ImageData);
-        this.ImageChangedEvent.emit({ imageName: this.filename,
+        /*this.ImageChangedEvent.emit({ imageName: this.filename,
           imageUrl: 'data:' + this.base64ImageData.fileType + ';base64,' +
-            this.base64ImageData.base64StringFile });
+            this.base64ImageData.base64StringFile });*/
       });
 
       reader.addEventListener('load', (event: any) => {
@@ -62,6 +62,9 @@ export class ImageUploadComponent {
           this.imageService.uploadImage(formData).subscribe(
           (res) => {
             this.onSuccess();
+            console.log('AAAAAAA', res.imageUrl);
+            this.ImageChangedEvent.emit({ imageName: res.imageUrl,
+              imageUrl: '' });
           },
           (err) => {
             this.onError();

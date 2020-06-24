@@ -17,6 +17,7 @@ export class ListComponent implements OnInit {
   imageWidth = '78px';
   imageMargin = '2px';
   mstr: String;
+  endpoint = 'http://localhost:8090/api/image/';
 
   constructor(private productService: ConfigServiceService) {}
 

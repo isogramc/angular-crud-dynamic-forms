@@ -20,11 +20,9 @@
            <td colspan="99" style="text-align: center">No results found</td>
       </tr>
       <tr *ngFor="let product of products, let index = i">
-        <!--<td [style.background-image]="'url(' + product.photoUrl + ')'" style="width: 110px; background-repeat: no-repeat; background-size: cover; background-position: center">
-           <img style="width: 100%" [src]="product.photoUrl" alt="Image of product" />
+        <!-- Keep for base64 reference <td [style.background-image]="'url(' + product.photoUrl + ')'" style="width: 110px; background-repeat: no-repeat; background-size: cover; background-position: center">
         </td>-->
-        <td [style.background-image]="'url(http://localhost:8090/api/image/' + product.photo + ')'" style="width: 110px; background-repeat: no-repeat; background-size: cover; background-position: center">
-                   <img style="width: 100%" [src]="product.photoUrl" alt="Image of product" />
+        <td [style.background-image]="'url(' + endpoint + product.photo + ')'" style="width: 110px; background-repeat: no-repeat; background-size: cover; background-position: center">
         </td>
         <td>{{product.title | uppercase}}</td>
         <td class="small-hides">{{product.productCode}}</td>
