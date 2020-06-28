@@ -16,6 +16,8 @@ export class ListComponent implements OnInit {
   addNewProductMode = true;
   imageWidth = '78px';
   imageMargin = '2px';
+  period: number;
+  photoext: String;
   mstr: String;
   endpoint = 'http://localhost:8090/api/image/';
 
@@ -25,10 +27,20 @@ export class ListComponent implements OnInit {
     if (value === 'true') {
       return true;
     }
-
     return typeof value === 'string'
       ? !!+value   // we parse string to integer first
       : !!value;
+  }
+
+  setUrl(photoUrl, photo) {
+    if (photoUrl === '') {
+      return this.endpoint + photo;
+    } else {
+      this.period = photo.lastIndexOf('.');
+      this.photoext = photo.substring((parseInt('10', this.period) + 1), photo.length);
+      console.log('data:image/' + this.photoext + '; base64,' + photoUrl);
+      return ('data:image/' + this.photoext + ';base64,' + photoUrl);
+    }
   }
 
   ngOnInit() {

@@ -20,16 +20,12 @@
            <td colspan="99" style="text-align: center">No results found</td>
       </tr>
       <tr *ngFor="let product of products, let index = i">
-        <!-- Keep for base64 reference <td [style.background-image]="'url(' + product.photoUrl + ')'" style="width: 110px; background-repeat: no-repeat; background-size: cover; background-position: center">
-        </td>-->
-        <td [style.background-image]="'url(' + endpoint + product.photo + ')'" style="width: 110px; background-repeat: no-repeat; background-size: cover; background-position: center">
-        </td>
-
+        <td [style.background-image]="'url(' + setUrl(product.photoUrl, product.photo) + ')'" style="width: 110px; background-repeat: no-repeat; background-size: cover; background-position: center"></td>
         <td>{{product.title | uppercase}}</td>
         <td class="small-hides">{{product.productCode}}</td>
         <td>
-            <span *ngIf="primitiveToBoolean(product.instock)" style="color: green">{{product.price | currency:'ZAR':'R' }}</span>
-            <span *ngIf="!primitiveToBoolean(product.instock)" style="color: red">{{product.price | currency:'ZAR':'R'}}</span>
+            <span *ngIf="primitiveToBoolean(product.instock)" style="color: green">{{product.price | currency:'EUR' }}</span>
+            <span *ngIf="!primitiveToBoolean(product.instock)" style="color: red">{{product.price | currency:'EUR'}}</span>
         </td>
          <td class="small-hides">{{product.rating}}</td>
          <td class="small-hides">{{product.description}}</td>

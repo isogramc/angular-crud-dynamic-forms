@@ -1,5 +1,9 @@
  <div class="container">
-   <label class="checkbox-con"><input class="checkbox-plain" type="checkbox" (change)="!base64Selected">Base64</label>
+   <label class="checkbox-con">
+   <input class="checkbox-plain" type="checkbox"
+   [checked]="base64Selected"
+   (change)="base64Selected = !base64Selected">
+   Base64</label>
    <label class="image-upload-container btn btn-bwm">
      <span>Select Image</span>
      <input #imageInput

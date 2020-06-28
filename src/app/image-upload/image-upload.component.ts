@@ -52,7 +52,6 @@ export class ImageUploadComponent {
       reader.addEventListener('load', (event: any) => {
         this.selectedFile = new ImageSnippet(event.target.result, file);
         this.selectedFile.pending = true;
-
         const formData = new FormData();
         formData.append('photo', file);
 
@@ -63,11 +62,11 @@ export class ImageUploadComponent {
             if ( this.base64Selected ) {
               this.img = this.base64ImageData.base64StringFile;
             } else {
-              this.img = '';
+                this.img = '';
             }
             this.ImageChangedEvent.emit({ imageName: res.imageUrl,
               imageUrl: this.img });
-          },
+            },
           (err) => {
             this.onError();
           });
