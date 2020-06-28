@@ -34,11 +34,13 @@ export class ListComponent implements OnInit {
 
   setUrl(photoUrl, photo) {
     if (photoUrl === '') {
+      console.log('photo');
       return this.endpoint + photo;
     } else {
+      console.log('base64');
       this.period = photo.lastIndexOf('.');
       this.photoext = photo.substring((parseInt('10', this.period) + 1), photo.length);
-      console.log('data:image/' + this.photoext + '; base64,' + photoUrl);
+      // console.log('data:image/' + this.photoext + '; base64,' + photoUrl);
       return ('data:image/' + this.photoext + ';base64,' + photoUrl);
     }
   }
